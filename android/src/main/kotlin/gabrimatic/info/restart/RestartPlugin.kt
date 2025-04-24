@@ -75,7 +75,7 @@ class RestartPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             
             intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             currentActivity.startActivity(intent)
-            currentActivity.finishAffinity()
+            currentActivity.finish()
         }
     }
 
