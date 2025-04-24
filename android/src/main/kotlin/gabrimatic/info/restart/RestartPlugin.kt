@@ -68,6 +68,11 @@ class RestartPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         activity?.let { currentActivity ->
             val intent =
                 currentActivity.packageManager.getLaunchIntentForPackage(currentActivity.packageName)
+
+            if (intent == null) {
+                intent = currentActivity.packageManager.getLeanbackLaunchIntentForPackage(currentActivity.packageName)
+            }
+            
             intent?.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             currentActivity.startActivity(intent)
             currentActivity.finishAffinity()
