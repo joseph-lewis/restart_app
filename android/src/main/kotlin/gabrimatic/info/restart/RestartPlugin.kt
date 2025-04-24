@@ -66,7 +66,7 @@ class RestartPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
      */
     private fun restartApp() {
         activity?.let { currentActivity ->
-            val intent =
+            var intent =
                 currentActivity.packageManager.getLaunchIntentForPackage(currentActivity.packageName)
 
             if (intent == null) {
